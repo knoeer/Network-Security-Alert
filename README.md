@@ -1,6 +1,6 @@
 网络与安全告警系统 (Network-Security-Alert)
 
-基于 Electron + React + TypeScript 的网络安全告警平台，通过 **SNMP Trap** 和 **Syslog** 双通道接收安全设备（防火墙等）的威胁告警，实现实时弹窗告警、事件查询统计、设备监测等功能。
+基于 Electron + React + TypeScript 的网络安全告警平台，通过双通道接收安全设备（防火墙等）的威胁告警，实现实时弹窗告警、事件查询统计、设备监测等功能。
 
 <img width="1264" height="791" alt="image" src="https://github.com/user-attachments/assets/eeb8d5b8-c168-4de0-beeb-4e3c4b3a612b" />
 
