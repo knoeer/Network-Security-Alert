@@ -1,0 +1,295 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* ====== Sidebar ====== */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--color-bg-sidebar);
+  color: var(--color-text-white);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  user-select: none;
+  transition: width 0.3s ease;
+  overflow: hidden;
+}
+
+/* 收起状态：宽度缩窄，只显示图标 */
+.sidebar-collapsed {
+  width: 64px;
+}
+
+/* 收起时隐藏标题文字 */
+.sidebar-collapsed .sidebar-title {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar-collapsed .sidebar-header {
+  justify-content: center;
+  padding: 16px 8px;
+}
+
+.sidebar-collapsed .sidebar-logo {
+  font-size: 24px;
+}
+
+/* 收起时隐藏导航文字，居中图标 */
+.sidebar-collapsed .nav-item {
+  justify-content: center;
+  padding: 10px 0;
+  gap: 0;
+}
+
+.sidebar-collapsed .nav-label {
+  display: none;
+}
+
+.sidebar-collapsed .nav-icon {
+  font-size: 20px;
+}
+
+/* 收起时隐藏状态文字，只留圆点 */
+.sidebar-collapsed .trap-status {
+  justify-content: center;
+}
+
+.sidebar-collapsed .trap-status span:last-child {
+  display: none;
+}
+
+/* 收起/展开按钮 */
+.sidebar-collapse-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+  transition: background 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.sidebar-collapse-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.collapse-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.sidebar-collapsed .collapse-label {
+  display: none;
+}
+
+.sidebar-collapsed .sidebar-collapse-btn {
+  padding: 10px 0;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.sidebar-logo {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.sidebar-logo-img {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  object-fit: contain;
+  display: block;
+}
+
+.sidebar-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-title-main {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-title-sub {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 1px;
+}
+
+/* Navigation */
+.sidebar-nav {
+  flex: 1;
+  padding: 12px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.7);
+  transition: var(--transition);
+  font-size: 14px;
+  position: relative;
+}
+
+/* 未确认事件数红色徽标（圆点内显示数字） */
+.nav-badge {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background: var(--color-danger, #e02424);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 6px rgba(224, 36, 36, 0.4);
+}
+
+/* 收起状态下徽标缩到右上角小圆点 */
+.sidebar-collapsed .nav-badge {
+  right: 4px;
+  top: 4px;
+  transform: none;
+  min-width: 14px;
+  height: 14px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 9px;
+  line-height: 14px;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.nav-item-active {
+  background: var(--color-primary) !important;
+  color: #fff !important;
+  font-weight: 500;
+}
+
+.nav-icon {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.nav-label {
+  white-space: nowrap;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.trap-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-dot-online {
+  background: var(--color-success);
+  box-shadow: 0 0 6px rgba(13, 144, 79, 0.5);
+}
+
+.status-dot-offline {
+  background: #666;
+}
+
+/* ====== Main Area ====== */
+.main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.top-bar {
+  height: var(--header-height);
+  background: var(--color-bg-white);
+  border-bottom: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.page-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+@media (min-width: 900px) {
+  .top-bar { padding: 0 24px; }
+  .page-title { font-size: 16px; }
+  .content { padding: 24px; }
+}

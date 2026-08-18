@@ -1,0 +1,116 @@
+/* ====== 网络拓扑页面 ====== */
+.topology-page {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.topology-device-select {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.topology-select-label {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.topology-count {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+/* 拓扑画布 */
+.topology-canvas-wrap {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.topology-svg {
+  width: 100%;
+  max-width: 800px;
+  min-height: 440px;
+  display: block;
+  margin: 0 auto;
+}
+
+.topology-link {
+  stroke: #c5d5ea;
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;
+}
+
+.topology-node {
+  cursor: default;
+}
+
+.topology-node-circle {
+  fill: #e8f0fe;
+  stroke: #1a73e8;
+  stroke-width: 2;
+}
+
+.topology-node-circle-minor {
+  fill: #f1f3f4;
+  stroke: #9aa0a6;
+  stroke-width: 1.5;
+}
+
+.topology-node-icon {
+  font-size: 26px;
+}
+
+.topology-node-icon-minor {
+  font-size: 16px;
+}
+
+.topology-node-label {
+  font-size: 11px;
+  fill: var(--color-text);
+}
+
+/* 中心设备信息浮层 */
+.topology-center-info {
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+}
+
+.topology-center-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.topology-center-info code {
+  font-size: 11px;
+}
+
+.topology-center-type {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+/* 路由表 / ARP 表 布局 */
+.topology-tables {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 900px) {
+  .topology-tables {
+    grid-template-columns: 1fr 1fr;
+  }
+}

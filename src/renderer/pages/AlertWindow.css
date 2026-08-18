@@ -1,0 +1,232 @@
+/* Alert Window - No frame, custom titlebar */
+.alert-window {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-white);
+  border: 3px solid var(--color-danger);
+  border-radius: 0;
+  overflow: hidden;
+  user-select: none;
+  box-shadow: 0 0 30px rgba(217, 48, 37, 0.6);
+}
+
+.alert-window.flash {
+  animation: alertFlash 0.6s ease-in-out infinite;
+}
+
+@keyframes alertFlash {
+  0%, 100% {
+    border-color: var(--color-danger);
+    box-shadow: 0 0 30px rgba(217, 48, 37, 0.8);
+  }
+  50% {
+    border-color: rgba(217, 48, 37, 0.3);
+    box-shadow: 0 0 8px rgba(217, 48, 37, 0.2);
+  }
+}
+
+/* Titlebar */
+.alert-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: linear-gradient(90deg, #d93025, #e8443a);
+  border-bottom: 1px solid #c62828;
+  -webkit-app-region: drag;
+}
+
+.alert-titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.alert-titlebar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  -webkit-app-region: no-drag;
+}
+
+.alert-icon {
+  font-size: 16px;
+}
+
+.alert-countdown {
+  font-size: 12px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.alert-close-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #fff;
+  -webkit-app-region: no-drag;
+  transition: var(--transition);
+}
+
+.alert-close-btn:hover {
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+/* Body */
+.alert-body {
+  flex: 1;
+  padding: 16px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 头部：级别徽标 + 攻击类型 */
+.alert-head {
+  text-align: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.alert-severity-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.severity-critical { background: #fce8e6; color: #b31412; }
+.severity-high { background: #fce8e6; color: #d93025; }
+.severity-medium { background: #fef7e0; color: #e37400; }
+.severity-low { background: #e6f4ea; color: #137333; }
+
+.alert-attack-type {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* 标准攻击类型徽标 */
+.alert-category-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background: #1a73e8;
+  border-radius: 10px;
+  padding: 1px 8px;
+  white-space: nowrap;
+}
+
+/* Info Grid */
+.alert-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.alert-info-item {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.alert-info-item label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.alert-info-item span,
+.alert-info-item code {
+  font-size: 13px;
+  color: var(--color-text);
+  word-break: break-all;
+  font-weight: 600;
+}
+
+.alert-info-item code {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 13px;
+}
+
+/* 源地址攻击次数标识 */
+.alert-source-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.alert-attack-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #b31412;
+  background: #fce8e6;
+  border: 1px solid #f5b7b1;
+  border-radius: 10px;
+  padding: 1px 8px;
+  white-space: nowrap;
+}
+
+/* 描述区 */
+.alert-desc {
+  background: var(--color-bg);
+  border-left: 3px solid var(--color-primary);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+
+.alert-desc-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.alert-desc-content {
+  font-size: 12px;
+  color: var(--color-text);
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+/* Footer */
+.alert-footer {
+  padding: 12px 20px;
+  border-top: 1px solid var(--color-border-light);
+  display: flex;
+  justify-content: flex-end;
+}

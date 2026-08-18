@@ -1,0 +1,433 @@
+.settings-page {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* ====== 标签页导航 ====== */
+.settings-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.settings-tab {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.settings-tab:hover {
+  color: var(--color-text);
+  background: var(--color-bg-hover);
+}
+
+.settings-tab-active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  font-weight: 600;
+}
+
+.settings-tab-active:hover {
+  color: var(--color-primary);
+  background: none;
+}
+
+.settings-tab-content {
+  animation: fade-in 0.2s ease;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border-light);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.setting-row:first-child {
+  padding-top: 0;
+}
+
+.setting-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.setting-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.setting-desc {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.setting-control {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+/* 设置区块小标题（按威胁程度控制弹窗） */
+.setting-section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  padding: 14px 0 4px;
+  border-top: 1px dashed var(--color-border-light);
+  margin-top: 6px;
+}
+
+/* 各威胁等级弹窗开关行 */
+.severity-popup-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border-light);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.severity-popup-row:last-child {
+  border-bottom: none;
+}
+
+/* 等级颜色圆点 */
+.sev-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.sev-critical { background: #b31412; }
+.sev-high { background: #d93025; }
+.sev-medium { background: #f9ab00; }
+.sev-low { background: #0d904f; }
+
+/* Toggle Switch */
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 24px;
+  transition: 0.3s;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.toggle input:checked + .toggle-slider {
+  background: var(--color-primary);
+}
+
+.toggle input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+}
+
+/* About */
+.about-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.about-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: 14px;
+}
+
+.about-row:last-child {
+  border-bottom: none;
+}
+
+.about-row span:first-child {
+  color: var(--color-text-secondary);
+}
+
+.about-row span:last-child {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+/* Syslog 调试面板 */
+.syslog-debug-info {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+  padding: 8px 12px;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+}
+
+.syslog-log-list {
+  max-height: 280px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  background: #fafbfc;
+  word-break: break-all;
+}
+
+.syslog-empty {
+  padding: 24px;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.syslog-empty ol {
+  margin: 8px 0 0 20px;
+  padding: 0;
+}
+
+.syslog-log-item {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: 12px;
+}
+
+.syslog-log-item:last-child {
+  border-bottom: none;
+}
+
+.syslog-log-threat {
+  background: #fef7e0;
+  border-left: 3px solid #e37400;
+}
+
+.syslog-log-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.syslog-log-time {
+  font-weight: 600;
+  color: var(--color-text);
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+}
+
+.syslog-log-source {
+  color: var(--color-text-secondary);
+}
+
+.syslog-log-badge {
+  background: #e37400;
+  color: #fff;
+  padding: 1px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.syslog-log-content {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  word-break: break-all;
+  white-space: pre-wrap;
+  background: rgba(0, 0, 0, 0.03);
+  padding: 6px 8px;
+  border-radius: 3px;
+  max-height: 80px;
+  overflow-y: auto;
+}
+
+/* 设备离线监测 */
+.monitor-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  flex-wrap: wrap;
+}
+
+.monitor-summary-stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.monitor-summary-stat {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.monitor-summary-stat strong {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-left: 4px;
+}
+
+.monitor-summary-stat.stat-online strong {
+  color: #0d904f;
+}
+
+.monitor-summary-stat.stat-offline strong {
+  color: #b31412;
+}
+
+.monitor-status-list {
+  margin-top: 12px;
+  padding-top: 8px;
+}
+
+.monitor-filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.monitor-filter-btn {
+  padding: 4px 14px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.monitor-filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.monitor-filter-active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+.monitor-filter-active:hover {
+  color: #fff;
+}
+
+.monitor-status-scroll {
+  max-height: 320px;
+  overflow-y: auto;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  padding: 0 12px;
+}
+
+.monitor-status-empty {
+  padding: 20px;
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+}
+
+.monitor-status-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: 13px;
+}
+
+.monitor-status-item:last-child {
+  border-bottom: none;
+}
+
+.monitor-status-name {
+  font-weight: 500;
+  color: var(--color-text);
+  min-width: 100px;
+}
+
+.monitor-status-ip {
+  color: var(--color-text-secondary);
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 12px;
+  flex: 1;
+}
+
+.monitor-status-badge {
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-online {
+  background: rgba(13, 144, 79, 0.12);
+  color: #0d904f;
+}
+
+.badge-offline {
+  background: rgba(179, 20, 18, 0.12);
+  color: #b31412;
+}
+
+.badge-unknown {
+  background: rgba(128, 128, 128, 0.15);
+  color: #666;
+}
+
+.monitor-status-fail {
+  font-size: 12px;
+  color: #b31412;
+}
+
+.sev-online { background: #0d904f; }
+.sev-offline { background: #b31412; }
+.sev-unknown { background: #9aa0a6; }

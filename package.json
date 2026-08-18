@@ -1,0 +1,108 @@
+{
+  "name": "snmp-security-alert",
+  "version": "1.0.0",
+  "description": "基于SNMP协议的网络安全弹窗告警软件",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:main\"",
+    "dev:renderer": "vite",
+    "dev:main": "tsc -p tsconfig.main.json && electron .",
+    "build:renderer": "tsc -p tsconfig.renderer.json && vite build",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build": "npm run build:renderer && npm run build:main",
+    "start": "electron .",
+    "package": "electron-builder"
+  },
+  "build": {
+    "appId": "com.snmp.security-alert",
+    "productName": "SNMP安全告警",
+    "directories": {
+      "output": "release_dist"
+    },
+    "files": [
+      "dist/**/*",
+      "src/renderer/assets/icon*.png",
+      "src/renderer/assets/icon.ico",
+      "package.json",
+      "!**/*.log",
+      "!**/*.tmp",
+      "!**/*.bak",
+      "!**/*.tsbuildinfo",
+      "!**/node_modules/.cache",
+      "!**/node_modules/.bin",
+      "!**/.DS_Store",
+      "!**/Thumbs.db",
+      "!**/node_modules/ip2region/data/ipv6wry.db",
+      "!**/node_modules/**/*.map",
+      "!**/.claude/**",
+      "!**/.vscode/**",
+      "!**/.devcontainer/**",
+      "!**/node_modules/**/README*",
+      "!**/node_modules/**/LICENSE*",
+      "!**/node_modules/**/CHANGELOG*",
+      "!**/node_modules/**/CONTRIBUTING*",
+      "!**/node_modules/**/eslint*",
+      "!**/node_modules/**/.eslintrc*",
+      "!**/node_modules/**/.jsdoc*",
+      "!**/node_modules/**/.prettierrc*",
+      "!**/node_modules/**/AUTHORS",
+      "!**/node_modules/**/logo.svg",
+      "!**/node_modules/**/ref/**",
+      "!**/node_modules/**/*.md"
+    ],
+    "asarUnpack": [
+      "node_modules/sql.js/dist/*.wasm"
+    ],
+    "extraResources": [
+      {
+        "from": "data",
+        "to": "data",
+        "filter": [
+          "*.db"
+        ]
+      },
+      {
+        "from": "config",
+        "to": "config",
+        "filter": [
+          "*.json"
+        ]
+      }
+    ],
+    "electronDist": "node_modules/electron/dist",
+    "win": {
+      "target": "nsis",
+      "icon": "src/renderer/assets/icon.ico",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "SNMP安全告警",
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "dependencies": {
+    "ip2region": "^2.3.0",
+    "net-snmp": "^3.26.3",
+    "sql.js": "^1.14.1"
+  },
+  "devDependencies": {
+    "@types/emscripten": "^1.41.5",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@types/sql.js": "^1.4.11",
+    "@vitejs/plugin-react": "^4.3.0",
+    "concurrently": "^9.0.0",
+    "electron": "^32.0.0",
+    "electron-builder": "^25.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "react-router-dom": "^6.26.0",
+    "typescript": "^5.6.0",
+    "vite": "^5.4.0"
+  }
+}

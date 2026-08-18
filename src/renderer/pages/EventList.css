@@ -1,0 +1,353 @@
+.event-list-page {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.page-header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+@media (min-width: 900px) {
+  .page-header h1 { font-size: 22px; }
+}
+
+/* 表格：内容压缩适应，禁止横向滚动 */
+.event-list-page .card-body > table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.event-list-page .card-body > table th,
+.event-list-page .card-body > table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.event-list-page .card {
+  overflow: hidden;
+}
+
+.event-count-badge {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
+  padding: 2px 10px;
+  border-radius: 10px;
+}
+
+.filter-bar {
+  margin-bottom: 0;
+}
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-row .input,
+.filter-row .select {
+  width: auto;
+}
+
+/* Batch Toolbar */
+.batch-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding: 10px 16px;
+  background: var(--color-primary-light);
+  border: 1px solid #c6dafc;
+  border-radius: var(--radius-sm);
+}
+
+.batch-info {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.batch-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Status Indicator */
+.status-indicator {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.status-indicator.acknowledged {
+  background: #e6f4ea;
+  color: #137333;
+}
+
+.status-indicator.unacknowledged {
+  background: #fef7e0;
+  color: #e37400;
+}
+
+/* Action Buttons */
+.action-btns {
+  display: flex;
+  gap: 4px;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* 操作按钮更紧凑，避免操作列内被挤压 */
+.event-list-page .action-btns .btn-sm {
+  padding: 4px 6px;
+}
+
+/* 让操作列有足够宽度显示 3 个按钮 */
+.event-list-page .table th:last-child,
+.event-list-page .table td:last-child {
+  width: 200px;
+  min-width: 200px;
+  white-space: nowrap;
+  padding: 8px 8px;
+}
+
+/* 操作列表头右对齐，与右侧的按钮对齐 */
+.event-list-page .table th:last-child {
+  text-align: right;
+  padding-right: 4px;
+}
+
+/* 可拖拽调整列宽的表头 */
+.event-list-page .table th.resizeable-th {
+  position: relative;
+}
+
+/* 拖拽手柄（位于列右侧边缘） */
+.event-list-page .table .col-resizer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6px;
+  height: 100%;
+  cursor: col-resize;
+  z-index: 10;
+  user-select: none;
+}
+
+.event-list-page .table .col-resizer:hover {
+  background: var(--color-primary, #1a73e8);
+  opacity: 0.6;
+}
+
+/* 最后一列（操作列）不提供拖拽手柄 */
+.event-list-page .table .col-resizer-disabled {
+  display: none;
+}
+
+/* 表格使用 fixed 布局，所有列宽固定，避免被挤压 */
+.event-list-page .table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* IP 单元格：IP 与属地徽标纵向排列 */
+.event-list-page .ip-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  white-space: normal;
+  overflow: visible;
+  min-width: 0;
+}
+
+/* 攻击类型单元格：显示标准分类 */
+.event-list-page .attack-cell {
+  display: flex;
+  align-items: center;
+  white-space: normal;
+  min-width: 0;
+}
+
+.event-list-page .attack-cell-main {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+/* 减小单元格内边距，让列更紧凑 */
+.event-list-page .table th,
+.event-list-page .table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 8px 8px;
+}
+
+/* 复选框列 */
+.event-list-page .table th:nth-child(1),
+.event-list-page .table td:nth-child(1) {
+  width: 36px;
+  min-width: 36px;
+  text-align: center;
+  padding: 8px 4px;
+}
+
+/* 时间列：完整显示 yyyy/M/d hh:mm:ss */
+.event-list-page .table th:nth-child(2),
+.event-list-page .table td:nth-child(2) {
+  width: 140px;
+  min-width: 140px;
+}
+
+/* 攻击类型列 */
+.event-list-page .table th:nth-child(3),
+.event-list-page .table td:nth-child(3) {
+  width: 110px;
+  min-width: 110px;
+}
+
+/* 源IP:端口、目标IP:端口 列：给足宽度完整显示 IP:端口 */
+.event-list-page .table th:nth-child(4),
+.event-list-page .table td:nth-child(4),
+.event-list-page .table th:nth-child(5),
+.event-list-page .table td:nth-child(5) {
+  width: 165px;
+  min-width: 165px;
+}
+
+/* 设备名称列 */
+.event-list-page .table th:nth-child(6),
+.event-list-page .table td:nth-child(6) {
+  width: 115px;
+  min-width: 115px;
+}
+
+/* 级别列（badge 低危/中危等） */
+.event-list-page .table th:nth-child(7),
+.event-list-page .table td:nth-child(7) {
+  width: 70px;
+  min-width: 70px;
+}
+
+/* 状态列紧凑 */
+.event-list-page .table th:nth-child(8),
+.event-list-page .table td:nth-child(8) {
+  width: 80px;
+  min-width: 80px;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  padding: 12px;
+  flex-wrap: wrap;
+}
+
+.page-info {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* 页码数字按钮组 */
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.page-btn {
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid var(--color-border, #e0e0e0);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-white, #fff);
+  color: var(--color-text, #333);
+  font-size: 13px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.page-btn-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  cursor: default;
+}
+
+.page-btn-active:hover {
+  color: #fff;
+}
+
+.page-ellipsis {
+  min-width: 24px;
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  user-select: none;
+}
+
+/* 页码跳转输入框 */
+.page-jump {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.page-jump-input {
+  width: 60px;
+  height: 32px;
+  text-align: center;
+  padding: 0 6px;
+}

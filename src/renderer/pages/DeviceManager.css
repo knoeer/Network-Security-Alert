@@ -1,0 +1,215 @@
+.device-manager-page {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.device-manager-page .card-body > table {
+  table-layout: auto;
+  width: 100%;
+}
+
+.device-manager-page .card-body > table th,
+.device-manager-page .card-body > table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 10px 12px;
+}
+
+/* 整行可点击进入详情 */
+.device-manager-page .card-body > table tbody tr.device-row {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.device-manager-page .card-body > table tbody tr.device-row:hover {
+  background-color: var(--color-bg-hover);
+}
+
+.device-manager-page .card-body > table tbody tr.device-row:active {
+  background-color: var(--color-primary-light);
+}
+
+/* 设备表操作列固定宽度 */
+.device-manager-page .card-body > table th:last-child,
+.device-manager-page .card-body > table td:last-child {
+  width: 280px;
+  min-width: 280px;
+  max-width: 280px;
+  white-space: nowrap;
+  padding: 8px 10px;
+}
+
+.device-manager-page .card {
+  overflow: hidden;
+}
+
+.page-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+/* 设备信息预览（表单中的测试结果） */
+.device-info-preview {
+  margin-top: 12px;
+  padding: 12px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+}
+
+.device-info-preview .info-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+.device-info-preview div {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.device-info-preview label {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.action-btns {
+  display: flex;
+  gap: 6px;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  width: 560px;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.modal-header h3 {
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.modal-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.modal-close:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-text);
+}
+
+.modal-body {
+  padding: 20px 24px;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.modal-footer-right {
+  display: flex;
+  gap: 8px;
+}
+
+/* Form Grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.form-group-full {
+  grid-column: 1 / -1;
+}
+
+textarea.input {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.test-result {
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+}
+
+.test-success {
+  background: #e6f4ea;
+  color: #137333;
+}
+
+.test-fail {
+  background: #fce8e6;
+  color: #b31412;
+}

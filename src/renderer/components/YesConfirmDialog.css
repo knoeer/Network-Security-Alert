@@ -1,0 +1,117 @@
+.yes-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  animation: yesFadeIn 0.2s ease;
+}
+
+@keyframes yesFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.yes-modal {
+  background: var(--color-bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  width: 420px;
+  max-width: 90vw;
+  animation: yesSlideUp 0.25s ease;
+}
+
+@keyframes yesSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.yes-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border-light);
+  background: #fce8e6;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.yes-modal-warning {
+  font-size: 20px;
+}
+
+.yes-modal-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-danger);
+  flex: 1;
+  margin: 0;
+}
+
+.yes-modal-close {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  transition: var(--transition);
+}
+
+.yes-modal-close:hover {
+  background: var(--color-danger);
+  color: #fff;
+}
+
+.yes-modal-body {
+  padding: 20px;
+}
+
+.yes-modal-message {
+  font-size: 14px;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.yes-modal-input-wrap {
+  margin-bottom: 20px;
+}
+
+.yes-modal-input-wrap label {
+  display: block;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 8px;
+}
+
+.yes-modal-input-wrap code {
+  background: #fce8e6;
+  color: var(--color-danger);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.yes-modal-input {
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.yes-modal-input:focus {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 2px rgba(217, 48, 37, 0.15);
+}
+
+.yes-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}

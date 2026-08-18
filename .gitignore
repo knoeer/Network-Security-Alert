@@ -1,0 +1,68 @@
+# 依赖
+node_modules/
+
+# 构建产物
+dist/
+release/
+release_clean/
+release_v2/
+release_dist/
+
+# 本地数据
+db/
+data/
+
+# 备份
+backup_*/
+
+# 日志
+*.log
+dev_out.log
+dev_err.log
+ico_log.txt
+
+# 临时与调试脚本
+_diag_dash*.js
+_scan*.js
+_scan*.js
+_scan3.js
+_server.js
+capture_udp.js
+check_filter.js
+debug.js
+dump_pixels.js
+dump_test32.js
+gen_logo.js
+inline_run.js
+probe_pix.js
+raw_pix.js
+read_png.js
+repro.js
+test_pixel.js
+test_shield.js
+test_syslog.js
+test_waf_parser.js
+test_waf_sev.js
+
+# 测试图片/杂项图片
+*.png
+!src/**/*.png
+!README*.md
+
+# 工具/IDE 本地数据
+.codebuddy/
+.playwright-cli/
+.vite/
+
+# image_gen 生成的临时图片（非正式图标）
+src/renderer/assets/A_*.png
+src/renderer/assets/App_*.png
+
+# 系统文件
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# 运行时
+.env
+*.local

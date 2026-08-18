@@ -1,0 +1,415 @@
+/* ============= 仪表盘响应式布局 ============= */
+
+/* 默认基础（移动优先） */
+.dashboard {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.dashboard-header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ====== 统计卡片 ====== */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;   /* 默认移动端单列 */
+  gap: 12px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.stat-card {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  min-width: 0;
+}
+
+.stat-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+.stat-card-total { border-left: 3px solid var(--color-primary); }
+.stat-card-today { border-left: 3px solid var(--color-success); }
+.stat-card-critical { border-left: 3px solid var(--color-danger); }
+.stat-card-devices { border-left: 3px solid var(--color-warning); }
+
+.stat-icon { font-size: 24px; opacity: 0.8; flex-shrink: 0; }
+.stat-value { font-size: 22px; font-weight: 700; color: var(--color-text); line-height: 1.2; }
+.stat-label { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+
+/* ====== 趋势图（近7天） ====== */
+.trend-card { margin-bottom: 20px; }
+
+.trend-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 160px;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.trend-bar-group {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  gap: 4px;
+  min-width: 0;
+}
+
+.trend-bar-value {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  min-height: 14px;
+}
+
+.trend-bar {
+  width: 100%;
+  max-width: 48px;
+  background: transparent;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  overflow: hidden;
+  transition: height 0.5s ease;
+  min-height: 2px;
+  flex-shrink: 1;
+}
+
+.trend-bar-critical {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #b31412;
+}
+
+.trend-bar-high {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #d93025;
+}
+
+.trend-bar-medium {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f9ab00;
+}
+
+.trend-bar-low {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #0d904f;
+}
+
+.trend-bar-label {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ====== 多列网格（默认单列） ====== */
+.dashboard-grid-3,
+.dashboard-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+/* ====== TOP 榜 ====== */
+.top-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.top-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  min-width: 0;
+}
+
+.top-rank {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.top-rank-highlight {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.top-name {
+  flex-shrink: 0;
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* IP TOP 榜：IP 名称与属地徽标纵向排列 */
+.top-name-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+/* 最近事件表格 IP 单元格：IP 与属地徽标纵向排列 */
+.ip-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
+  white-space: normal;
+  min-width: 0;
+}
+
+.top-name code {
+  background: transparent;
+  padding: 0;
+  font-size: 12px;
+}
+
+.top-bar-track {
+  flex: 1;
+  height: 8px;
+  background: var(--color-bg);
+  border-radius: 4px;
+  overflow: hidden;
+  min-width: 40px;
+}
+
+.top-bar-fill {
+  height: 100%;
+  background: #1a73e8;
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.top-bar-fill-orange { background: #f9ab00; }
+.top-bar-fill-green { background: #0d904f; }
+.top-bar-fill-blue { background: #1a73e8; }
+
+.top-count {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text);
+  min-width: 30px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ====== 近24小时告警分布卡片：让内容贴底 ====== */
+.hourly-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.hourly-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px 20px 24px 16px;
+  min-height: 0;
+}
+
+/* ====== 近24小时柱状图 ====== */
+.hourly-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 120px;
+  padding: 0 10px;
+  width: 100%;
+  flex-shrink: 0;
+  margin-bottom: 15px;
+}
+
+.hourly-bar-group {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  gap: 2px;
+}
+
+/* 柱子：在 flex 容器内从底部向上生长 */
+.hourly-bar {
+  width: 100%;
+  max-width: 18px;
+  background: #1a73e8;
+  border-radius: 2px 2px 0 0;
+  transition: height 0.4s ease;
+  min-height: 3px;
+  flex-shrink: 0;
+}
+
+/* 数值：位于柱子正上方 */
+.hourly-bar-value {
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  line-height: 12px;
+  font-weight: 500;
+  min-height: 12px;
+  pointer-events: none;
+}
+
+/* 时间标签：位于 group 底部下方，避免与柱子重叠 */
+.hourly-bar-label {
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  transform: translateX(-50%) rotate(-45deg);
+  transform-origin: right center;
+  font-size: 9px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* ====== 最近事件 ====== */
+.recent-events-card {
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.recent-events-card .table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.recent-events-card .table th,
+.recent-events-card .table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recent-events-card .table td {
+  font-size: 12px;
+}
+
+code {
+  background: var(--color-bg);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 12px;
+}
+
+/* ====== 响应式断点 ====== */
+
+/* 小屏幕（≥600px）：统计卡片两列 */
+@media (min-width: 600px) {
+  .dashboard { padding: 0 20px; }
+  .dashboard-header h1 { font-size: 20px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .stat-card { padding: 18px; }
+  .stat-icon { font-size: 28px; }
+  .stat-value { font-size: 26px; }
+  .dashboard-grid-3 { grid-template-columns: 1fr 1fr; }
+  .dashboard-grid-2 { grid-template-columns: 1fr 1fr; }
+}
+
+/* 中等屏幕（≥900px）：统计卡片四列 */
+@media (min-width: 900px) {
+  .dashboard-header h1 { font-size: 22px; }
+  .stats-grid { grid-template-columns: repeat(4, 1fr); }
+  .stat-icon { font-size: 32px; }
+  .stat-value { font-size: 28px; }
+  .dashboard-grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* 大屏幕（≥1280px）：保持原样式 */
+@media (min-width: 1280px) {
+  .dashboard { padding: 0 24px; }
+  .stat-card { padding: 20px; }
+  .trend-chart { height: 180px; }
+  .hourly-chart { height: 150px; }
+}
+
+/* 超宽屏（≥1600px）：限制最大宽度 */
+@media (min-width: 1600px) {
+  .dashboard {
+    max-width: 1600px;
+  }
+}
